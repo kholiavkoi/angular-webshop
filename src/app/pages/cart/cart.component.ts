@@ -39,9 +39,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartService.cart.subscribe((_cart: Cart) => {
-      console.log(this.cart)
       this.cart = _cart
-      console.log(this.cart)
 
       this.dataSource = this.cart.items
     })
@@ -59,4 +57,11 @@ export class CartComponent implements OnInit {
     this.cartService.removeFromCart(item)
   }
 
+  onAddQuantity(item: CartItem) {
+    this.cartService.addToCart(item)
+  }
+
+  onRemoveQuantity(item: CartItem) {
+    this.cartService.removeQuantity(item)
+  }
 }
